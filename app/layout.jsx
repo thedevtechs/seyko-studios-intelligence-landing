@@ -1,6 +1,6 @@
 import Script from 'next/script';
 import { getInlineStyle, getScreenLabel } from '../lib/static-site';
-import { seoDescription, seoKeywords, seoTitle, siteUrl, structuredData } from '../lib/seo';
+import { ogImage, seoDescription, seoKeywords, seoTitle, siteUrl, structuredData } from '../lib/seo';
 import '../assets/styles.css';
 
 export const metadata = {
@@ -21,12 +21,22 @@ export const metadata = {
     url: '/',
     siteName: 'Seyko Studios',
     type: 'website',
-    locale: 'en_US'
+    locale: 'en_US',
+    images: [
+      {
+        url: ogImage.path,
+        width: ogImage.width,
+        height: ogImage.height,
+        alt: ogImage.alt,
+        type: 'image/png'
+      }
+    ]
   },
   twitter: {
-    card: 'summary',
+    card: 'summary_large_image',
     title: seoTitle,
-    description: seoDescription
+    description: seoDescription,
+    images: [ogImage.path]
   },
   robots: {
     index: true,
