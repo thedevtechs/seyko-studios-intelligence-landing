@@ -16,6 +16,7 @@ Core services:
 - Short Demand Radar breakdown
 - Demand Radar Diagnostic
 - Ongoing Demand Radar
+- Multi-Location Group
 - Patient demand read
 - Competitor read
 - Consult hesitation review
@@ -31,7 +32,8 @@ Audience:
 Offer ladder:
 - Free short Demand Radar breakdown
 - $5k-$8k one-time Demand Radar Diagnostic, delivered in 7 days
-- $10k/mo Ongoing Demand Radar for a monthly market read
+- $10k/mo Ongoing Demand Radar for a monthly market read, 6-month minimum
+- $18k-$28k/mo Multi-Location Group for premium multi-location and multi-surgeon practices, 6-month minimum
 
 Contact:
 - partners@seykostudios.com

@@ -94,15 +94,19 @@
     document.querySelectorAll('.reveal, .motion-reveal').forEach(el => el.classList.add('in'));
   }
 
-  // FAQ toggles
-  document.querySelectorAll('.faq-item').forEach(item => {
-    const toggle = item.querySelector('.faq-toggle');
+  // FAQ toggles use delegation so they survive dev refreshes and dynamic renders.
+  const syncFaqToggle = item => {
+    const toggle = item && item.querySelector('.faq-toggle');
     if (toggle) toggle.textContent = item.classList.contains('open') ? '−' : '+';
+  };
 
-    item.addEventListener('click', () => {
-      item.classList.toggle('open');
-      if (toggle) toggle.textContent = item.classList.contains('open') ? '−' : '+';
-    });
+  document.querySelectorAll('.faq-item').forEach(syncFaqToggle);
+
+  document.addEventListener('click', event => {
+    const item = event.target.closest('.faq-item');
+    if (!item) return;
+    item.classList.toggle('open');
+    syncFaqToggle(item);
   });
 
   // Module switcher (home product system)

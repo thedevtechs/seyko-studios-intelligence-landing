@@ -45,7 +45,7 @@
       <a href="#faq" class="nav-link">FAQ</a>
     </nav>
     <div class="nav-cta">
-      <span class="status-pill">2 slots open<span class="status-dot"></span></span>
+      <span class="status-pill"><span class="status-dot"></span> 2 slots open</span>
       <a href="#book" class="btn btn-primary btn-sm">Request breakdown <span class="arrow">→</span></a>
     </div>
   </div>
@@ -78,7 +78,7 @@
     <div style="margin-top: 80px; padding: 28px; border: 1px solid var(--border); border-radius: var(--radius-lg); background: var(--surface); display: grid; grid-template-columns: repeat(4, 1fr); gap: 32px;">
       <div>
         <div class="stat-label">Active practice partners</div>
-        <div style="font-size: 32px; margin-top: 8px; letter-spacing: -0.02em;"><span data-count="2">2</span> live</div>
+        <div style="font-size: 32px; margin-top: 8px; letter-spacing: -0.02em;"><span data-count="3">3</span> live</div>
       </div>
       <div>
         <div class="stat-label">Open partner seats</div>
@@ -86,11 +86,11 @@
       </div>
       <div>
         <div class="stat-label">Diagnostic timeline</div>
-        <div style="font-size: 32px; margin-top: 8px; letter-spacing: -0.02em;"><span data-count="7">7</span> days</div>
+        <div style="font-size: 32px; margin-top: 8px; letter-spacing: -0.02em;"><span data-count="7">7</span> Days</div>
       </div>
       <div>
         <div class="stat-label">Specialty focus</div>
-        <div style="font-size: 32px; margin-top: 8px; letter-spacing: -0.02em;">Plastic surgery only</div>
+        <div style="font-size: 32px; margin-top: 8px; letter-spacing: -0.02em;">Plastic Surgery</div>
       </div>
     </div>
   </div>
@@ -181,14 +181,47 @@
         <h2 class="h-1" style="margin-top: 14px; max-width: 14ch;">What patients are actually searching for.</h2>
         <p class="lead" style="margin-top: 18px;">The best clues are often hiding in patient questions, pricing anxiety, revision fear, and surgeon-comparison behavior.</p>
       </div>
-      <div class="grid grid-2" style="gap: 14px;">
-        <div class="soft-card" style="padding: 22px;"><p style="font-size: 17px; line-height: 1.45; color: var(--text);">"How do I know if a rhinoplasty surgeon is good?"</p></div>
-        <div class="soft-card" style="padding: 22px;"><p style="font-size: 17px; line-height: 1.45; color: var(--text);">"How much should rhinoplasty cost in Beverly Hills?"</p></div>
-        <div class="soft-card" style="padding: 22px;"><p style="font-size: 17px; line-height: 1.45; color: var(--text);">"What happens if I hate my results?"</p></div>
-        <div class="soft-card" style="padding: 22px;"><p style="font-size: 17px; line-height: 1.45; color: var(--text);">"Best natural facelift surgeon"</p></div>
-        <div class="soft-card" style="padding: 22px;"><p style="font-size: 17px; line-height: 1.45; color: var(--text);">"Revision rhinoplasty worth it?"</p></div>
-        <div class="soft-card" style="padding: 22px; border-color: var(--accent-dim);">
-          <p style="font-size: 17px; line-height: 1.45; color: var(--text);">We turn these questions into clearer pages, stronger proof, and a better path to the consult.</p>
+      <div class="soft-card heatmap-card">
+        <div class="heatmap-meta">
+          <div>
+            <div class="mono-sm" style="color: var(--accent); margin-bottom: 10px;">Patient demand heatmap</div>
+            <p style="font-size: 17px; line-height: 1.55; color: var(--text); max-width: 44ch;">The strongest patient signals cluster around pricing anxiety, surgeon trust, revision fear, natural-result proof, and procedure comparison.</p>
+          </div>
+          <div class="heatmap-legend">
+            <span class="heatmap-key heatmap-key-low"></span><span>Low</span>
+            <span class="heatmap-key heatmap-key-mid"></span><span>Medium</span>
+            <span class="heatmap-key heatmap-key-high"></span><span>High</span>
+          </div>
+        </div>
+
+        <div class="heatmap-grid">
+          <div class="heatmap-label heatmap-label-header"></div>
+          <div class="heatmap-label">Cost</div>
+          <div class="heatmap-label">Trust</div>
+          <div class="heatmap-label">Revision</div>
+          <div class="heatmap-label">Natural results</div>
+          <div class="heatmap-label">Surgeon comparison</div>
+
+          <div class="heatmap-row-label">Search urgency</div>
+          <div class="heatmap-cell heatmap-high"></div>
+          <div class="heatmap-cell heatmap-mid"></div>
+          <div class="heatmap-cell heatmap-high"></div>
+          <div class="heatmap-cell heatmap-mid"></div>
+          <div class="heatmap-cell heatmap-high"></div>
+
+          <div class="heatmap-row-label">Reassurance need</div>
+          <div class="heatmap-cell heatmap-mid"></div>
+          <div class="heatmap-cell heatmap-high"></div>
+          <div class="heatmap-cell heatmap-high"></div>
+          <div class="heatmap-cell heatmap-high"></div>
+          <div class="heatmap-cell heatmap-mid"></div>
+
+          <div class="heatmap-row-label">Comparison focus</div>
+          <div class="heatmap-cell heatmap-low"></div>
+          <div class="heatmap-cell heatmap-high"></div>
+          <div class="heatmap-cell heatmap-mid"></div>
+          <div class="heatmap-cell heatmap-mid"></div>
+          <div class="heatmap-cell heatmap-high"></div>
         </div>
       </div>
     </div>
@@ -391,7 +424,7 @@
       </div>
 
       <div class="upsell-card hero">
-        <div style="display: flex; justify-content: space-between; align-items: start; margin-bottom: 12px;"><div class="chip chip-accent">03 · Most chosen</div><span class="mono-sm">12-mo min</span></div>
+        <div style="display: flex; justify-content: space-between; align-items: start; margin-bottom: 12px;"><div class="chip chip-accent">03 · Most chosen</div><span class="mono-sm">6-mo min</span></div>
         <h3 style="font-size: 22px; letter-spacing: -0.02em; margin-bottom: 8px;">Ongoing Demand Radar</h3>
         <p style="color: var(--text-muted); font-size: 14px; line-height: 1.55; min-height: 70px;">A monthly read for practice owners. We track patient concerns, procedure demand, competitor movement, and consult economics so growth decisions are grounded in what is actually happening.</p>
         <div style="margin: 18px 0 14px;"><span style="font-size: 36px; letter-spacing: -0.025em;">$10k</span><span class="mono-sm" style="margin-left: 6px;">/ mo</span></div>
@@ -422,6 +455,24 @@
         </ul>
         <a href="#book" class="btn btn-ghost" style="margin-top: 22px; justify-content: center;">Talk through the read</a>
       </div>
+    </div>
+
+    <div class="upsell-card" style="margin-top: 16px; flex-direction: row; justify-content: space-between; align-items: stretch; gap: 32px; padding: 32px; border-color: var(--accent-dim);">
+      <div style="flex: 1.2;">
+        <div style="display: flex; justify-content: space-between; align-items: start; margin-bottom: 12px; gap: 16px;"><div class="chip chip-accent">05 · Group practices</div><span class="mono-sm">6-mo min</span></div>
+        <h3 style="font-size: 24px; letter-spacing: -0.02em; margin-bottom: 8px;">Multi-Location Group</h3>
+        <p style="color: var(--text-muted); font-size: 14px; line-height: 1.6; max-width: 74ch;">For premium practices where demand, pricing, surgeon mix, and capacity vary by location. We compare procedure demand, surgeon positioning, consult economics, and operational constraints so the group can make better calls across markets instead of optimizing each office in isolation.</p>
+      </div>
+      <div style="flex: 1; min-width: 300px;">
+        <div style="margin-bottom: 14px;"><span style="font-size: 34px; letter-spacing: -0.025em;">$18–28k</span><span class="mono-sm" style="margin-left: 6px;">/ mo</span></div>
+        <ul class="price-features" style="margin-top: 8px; font-size: 13.5px;">
+          <li>Location-by-location demand read</li>
+          <li>Surgeon and procedure benchmarking</li>
+          <li>Pricing and capacity observations</li>
+          <li>Monthly group operator review</li>
+        </ul>
+      </div>
+      <a href="#book" class="btn btn-primary" style="align-self: center; justify-content: center;">Discuss group fit <span class="arrow">→</span></a>
     </div>
     <p style="margin-top: 28px; color: var(--text-faint); font-size: 13px; text-align: center;">Diagnostic fee is creditable toward the retainer in your first three months.</p>
   </div>
@@ -519,32 +570,32 @@
     </div>
     <div>
       <div class="faq-item open">
-        <div class="faq-q"><span>Why only plastic surgery?</span><span class="faq-toggle">−</span></div>
-        <p class="faq-a">Because focus compounds. Pricing, patient concerns, and surgeon comparisons all get sharper when we stay in one market. We considered dental, med spa, and derm — plastic surgery is the right mix of ticket size, decision anxiety, and founder involvement.</p>
+        <div class="faq-q"><span>What does the diagnostic actually tell us?</span><span class="faq-toggle">−</span></div>
+        <p class="faq-a">It tells you where patient interest is showing up, what concerns are slowing people down, which competing surgeons are easier to trust, and which pages or proof points deserve attention first. The output is built for owner decisions, not a slide deck that dies in a folder.</p>
       </div>
       <div class="faq-item">
-        <div class="faq-q"><span>Are you a marketing agency?</span><span class="faq-toggle">+</span></div>
-        <p class="faq-a">No. We don't run your ads, post your reels, or manage your SEO. We show why interested patients may not be booking: unanswered concerns, stronger competitor proof, unclear procedure pages, and the next fixes your team or agency should focus on.</p>
+        <div class="faq-q"><span>How is this different from an SEO or ads audit?</span><span class="faq-toggle">+</span></div>
+        <p class="faq-a">Most audits start with channels: rankings, traffic, campaigns, conversion rate. We start with the patient decision: what they are afraid of, how they compare surgeons, what proof they need, and where your practice becomes harder to choose. Your agency can still execute; this gives them a sharper brief.</p>
       </div>
       <div class="faq-item">
-        <div class="faq-q"><span>What size practice is this for?</span><span class="faq-toggle">+</span></div>
-        <p class="faq-a">Sweet spot for the ongoing Demand Radar is $5M–$50M ARR, founder-led or platform, with meaningful procedure volume. The one-time diagnostic is the better starting point when you want a clear market read before committing to a retainer.</p>
+        <div class="faq-q"><span>What evidence do you use?</span><span class="faq-toggle">+</span></div>
+        <p class="faq-a">We review search behavior, Google results, People Also Ask, Reddit and forum threads, review language, competitor pages, before-and-after context, pricing cues, and the practice's own consult path. We do not treat any single source as truth; the useful patterns are the ones that repeat across places patients actually use.</p>
       </div>
       <div class="faq-item">
-        <div class="faq-q"><span>Can we start with a one-time project?</span><span class="faq-toggle">+</span></div>
-        <p class="faq-a">Yes. The Demand Radar Diagnostic is a 7-day, fixed-scope project. You get a patient demand read, competitor read, consult hesitation review, procedure page priorities, and an owner briefing.</p>
+        <div class="faq-q"><span>Do we need to give you internal data?</span><span class="faq-toggle">+</span></div>
+        <p class="faq-a">Not for the short breakdown. For the 7-day diagnostic, internal data helps but is not required. If you can share consult volume by procedure, booked consult rate, surgery conversion, average ticket, and top lead sources, we can tie the outside market read to the economics inside the practice.</p>
       </div>
       <div class="faq-item">
-        <div class="faq-q"><span>How is patient data handled?</span><span class="faq-toggle">+</span></div>
-        <p class="faq-a">Carefully. Everything flows through signed BAAs. Our peer benchmarking is de-identified and aggregated to 5+ clinic cohorts — never re-exposed at the individual practice level. We'll refuse a project that violates this.</p>
+        <div class="faq-q"><span>What happens after the read?</span><span class="faq-toggle">+</span></div>
+        <p class="faq-a">You decide whether the opportunities are worth acting on. Some practices take the diagnostic and hand priorities to their internal team. Some ask us to stay close with a monthly Demand Radar. Buildouts only come after the read shows a clear reason to do them.</p>
       </div>
       <div class="faq-item">
-        <div class="faq-q"><span>Why the 12-month minimum on the retainer?</span><span class="faq-toggle">+</span></div>
-        <p class="faq-a">Because the market changes. Patient concerns shift, competitors adjust their pages, and consult economics need enough cycles to separate a real pattern from a one-off. If you only need the initial read, start with the 7-day diagnostic.</p>
+        <div class="faq-q"><span>How do you handle sensitive practice data?</span><span class="faq-toggle">+</span></div>
+        <p class="faq-a">Sensitive materials stay in a private cloud workspace with restricted access, not scattered across personal drives or generic AI tools. We can work from public-market research alone, but when a practice shares internal numbers, we keep them separated by client, limit access to the engagement team, and use them only to connect the outside demand read to practice economics.</p>
       </div>
       <div class="faq-item">
-        <div class="faq-q"><span>What if we're not a fit?</span><span class="faq-toggle">+</span></div>
-        <p class="faq-a">We say so on the intro call and send you a short list of three people we trust. We've turned down 11 retainers since we started — the cap on capacity is real, and we'd rather you go somewhere you'll be served well.</p>
+        <div class="faq-q"><span>How do you avoid becoming another vendor in the stack?</span><span class="faq-toggle">+</span></div>
+        <p class="faq-a">We do not ask to own every channel. The work is designed to make existing teams sharper: what to say, what to prove, which procedure pages need attention, and where patient hesitation is showing up. If you already have an agency, creative team, or internal marketer, Demand Radar should give them better priorities.</p>
       </div>
     </div>
   </div>
@@ -582,18 +633,17 @@
 <!-- FOOTER -->
 <footer class="footer">
   <div class="container">
-    <div class="footer-grid">
-      <div class="footer-col">
-        <div style="display: flex; align-items: center; gap: 10px; margin-bottom: 14px;"><span class="nav-logo-mark">S</span><span class="mono" style="color: var(--text);">Seyko Studios</span></div>
-        <p style="color: var(--text-muted); font-size: 14px; max-width: 36ch;">Clearer market reads for plastic surgery practices. Independent. Capped at 6 retainers.</p>
-        <div style="margin-top: 20px;"><span class="status-pill"><span class="status-dot"></span>2 slots open</span></div>
+    <div class="footer-min">
+      <div>
+        <div style="display: flex; align-items: center; gap: 10px; margin-bottom: 12px;"><span class="nav-logo-mark">S</span><span class="mono" style="color: var(--text);">Seyko Studios</span></div>
+        <p style="color: var(--text-muted); font-size: 14px; max-width: 42ch;">Clearer market reads for plastic surgery practices. Independent. Made in Los Angeles.</p>
       </div>
-      <div class="footer-col"><h5>The system</h5><a href="#system">Patient Demand Read</a><a href="#system">Competitor Read</a><a href="#system">Consult Hesitation Review</a><a href="#system">Consult Economics</a></div>
-      <div class="footer-col"><h5>Engagements</h5><a href="#pricing">Demand Radar Diagnostic</a><a href="#pricing">Ongoing Demand Radar</a><a href="#pricing">Buildouts</a><a href="#book">Short breakdown</a></div>
-      <div class="footer-col"><h5>Contact</h5><a href="mailto:partners@seykostudios.com">partners@seykostudios.com</a><a href="#book">Request breakdown</a><a href="#pricing">See diagnostic</a></div>
+      <div class="footer-actions">
+        <a href="mailto:partners@seykostudios.com" class="btn btn-ghost">partners@seykostudios.com</a>
+        <a href="#book" class="btn btn-primary">Request breakdown <span class="arrow">→</span></a>
+      </div>
     </div>
-    <div class="wordmark">SEYKO</div>
-    <div class="footer-bottom"><div>© 2026 Seyko Studios</div><div>Made in Los Angeles · Operating across NA</div></div>
+    <div class="footer-bottom"><div>© 2026 Seyko Studios</div><div>3 active partners · 2 slots open</div></div>
   </div>
 </footer>
 

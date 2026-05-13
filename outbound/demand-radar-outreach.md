@@ -122,7 +122,11 @@ The output is not "more marketing ideas." It is a clear view of what patients ca
 
 ## Retainer close
 
-Ongoing Demand Radar is for practice owners who want a sharper monthly read. Each month, we monitor patient concerns, competitor movement, procedure demand, and consult economics so the practice can make growth decisions with more clarity.
+Ongoing Demand Radar is for practice owners who want a sharper monthly read. Each month, we monitor patient concerns, competitor movement, procedure demand, and consult economics so the practice can make growth decisions with more clarity. Minimum engagement is 6 months.
+
+## Multi-location close
+
+For a multi-location or multi-surgeon group, the question is usually not just "where is demand?" It is where demand, pricing, surgeon positioning, and capacity differ by office. The Multi-Location Group engagement compares those patterns across locations so the practice can make better calls on procedure focus, pricing, capacity, and page priorities.
 
 ## Language to avoid
 
