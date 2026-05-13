@@ -66,8 +66,7 @@
     '.upsell-card',
     '.work-card',
     '.system',
-    '.faq-item',
-    '.footer-col'
+    '.faq-item'
   ].join(',');
 
   const revealEls = Array.from(document.querySelectorAll(revealTargets));
