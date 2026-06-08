@@ -1,6 +1,6 @@
-import Script from 'next/script';
 import { getInlineStyle, getScreenLabel } from '../lib/static-site';
 import { ogImage, seoDescription, seoKeywords, seoTitle, siteUrl, structuredData } from '../lib/seo';
+import Script from 'next/script';
 import '../assets/styles.css';
 
 export const metadata = {

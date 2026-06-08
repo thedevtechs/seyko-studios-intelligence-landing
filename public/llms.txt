@@ -1,39 +1,68 @@
 # Seyko Studios
 
-> Demand intelligence for plastic surgery practices.
+> A family-run demand intelligence agency for three high-value service markets.
 
-Seyko Studios is an independent demand intelligence partner for plastic surgery practices. The company focuses only on plastic surgery practices and helps owners see what patients are asking, how nearby surgeons earn trust, and where qualified consults may be hesitating.
-
-Operating note:
-- Made in Los Angeles
-- Currently working with 3 active practices
-- 2 open partner slots
+Seyko Studios maps buyer intent, competitor angles, objections, and conversion opportunities so service businesses know what to say, build, and fix first. The company is a family-run, husband-and-wife operated agency based in Los Angeles.
 
 Primary page:
 - https://seykostudios.com/
 
-Core services:
-- Short Demand Radar breakdown
-- Demand Radar Diagnostic
-- Ongoing Demand Radar
-- Multi-Location Group
-- Patient demand read
-- Competitor read
-- Consult hesitation review
-- More consult opportunities
-- Procedure page priorities
-- Consult economics
-- Revenue context
+Core industries:
+- Elective Healthcare: Procedure Demand Radar for qualified consults
+- High-Ticket Local Services: Project Demand Radar for booked estimates
+- B2B Services: Buyer Demand Radar for qualified sales conversations
 
-Audience:
-- Founder-led and platform plastic surgery practices
-- Plastic surgery teams evaluating patient acquisition strategy, procedure demand, consult hesitation, pricing uncertainty, competitive positioning, and revenue performance
+Core deliverables:
+- Demand map
+- Competitor angle map
+- Buyer or patient objection brief
+- Page, ad, landing page, or outreach angle plan
+- Monthly demand radar
 
-Offer ladder:
-- Free short Demand Radar breakdown
-- $5k-$8k one-time Demand Radar Diagnostic, delivered in 7 days
-- $10k/mo Ongoing Demand Radar for a monthly market read, 6-month minimum
-- $18k-$28k/mo Multi-Location Group for premium multi-location and multi-surgeon practices, 6-month minimum
+Delivery standard:
+- Every recommendation should point back to observed market behavior.
+- Main briefs stay short; evidence belongs in the appendix.
+- No fake precision, unsupported revenue projections, or generic advice.
+- Internal delivery playbook: /docs/demand-radar-delivery-playbook.md
+
+Homepage authority section:
+- Place authority signals between the hero and industry cards.
+- Use 2-3 short proof points written as statements of fact, not testimonials.
+- Mention visible inputs, diagnostic-before-execution, and capped/conflict-aware engagements.
+- Follow with one short prose blurb that contrasts most agencies with Seyko's market-read-first approach.
+- Do not turn this into a case study section, testimonial block, or long capabilities list.
+
+Published pricing:
+- Demand Snapshot: $2,500 one-time
+- Radar Buildout: $7,500 one-time
+- Monthly Demand Radar: $9,500 per month
+- Embedded Intelligence: $18,000+ per month
+
+Primary routes:
+- /
+- /elective-healthcare
+- /local-services
+- /b2b-services
+- /how-it-works
+- /pricing
+- /request-snapshot
+- /about
+
+Legitimacy and support routes:
+- /privacy
+- /terms
+- /data-security
+- /accessibility
+
+Positioning rules:
+- Describe Seyko Studios as a demand intelligence agency, not a generic marketing agency.
+- Do not lead with AI, scraping, lead generation, or reports.
+- Use revenue language: consults, estimates, quote requests, booked calls, qualified sales conversations.
+- Keep copy concise, practical, technical, and commercially useful.
+- Write like a sharp operator talking to a smart business owner over coffee.
+- Use direct sentences and short paragraphs. Outcomes first, mechanics second.
+- The reader should feel like Seyko understands their market, not like the service is trying to sound impressive.
+- Avoid jargon, abstract nouns, passive voice, and anything written to impress rather than convert.
 
 Contact:
 - partners@seykostudios.com

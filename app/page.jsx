@@ -1,7 +1,9 @@
-import { getBodyHtml } from '../lib/static-site';
+import { makeRouteMetadata, StaticRoutePage } from '../lib/route-page';
 
-export const dynamic = 'force-dynamic';
+export function generateMetadata() {
+  return makeRouteMetadata('home');
+}
 
 export default function Page() {
-  return <div style={{ display: 'contents' }} dangerouslySetInnerHTML={{ __html: getBodyHtml() }} />;
+  return <StaticRoutePage slug="home" />;
 }
