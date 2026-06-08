@@ -4,8 +4,11 @@
   "private": true,
   "scripts": {
     "dev": "next dev",
+    "generate:og": "node scripts/generate-og-image.js",
+    "seo:urls": "node --experimental-default-type=module scripts/list-seo-priority-urls.mjs",
     "build": "next build",
-    "start": "next start"
+    "start": "next start",
+    "verify:seo": "node --experimental-default-type=module scripts/verify-seo.mjs"
   },
   "dependencies": {
     "next": "^16.2.6",

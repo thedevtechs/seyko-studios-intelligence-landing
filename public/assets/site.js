@@ -48,6 +48,40 @@
     if (!isOpen) closeMenus();
   };
 
+  const cleanText = value => (value || '').replace(/\s+/g, ' ').trim().slice(0, 120);
+
+  const pushAnalyticsEvent = (eventName, payload = {}) => {
+    const eventPayload = {
+      ...payload,
+      source_path: window.location.pathname
+    };
+
+    if (typeof window.gtag === 'function') {
+      window.gtag('event', eventName, eventPayload);
+    }
+
+    window.dataLayer = window.dataLayer || [];
+    window.dataLayer.push({
+      event: eventName,
+      ...eventPayload
+    });
+  };
+
+  document.addEventListener('click', event => {
+    const link = event.target.closest('a[href]');
+    if (!link) return;
+
+    const destination = pathForLink(link);
+    if (destination !== '/request-snapshot') return;
+
+    pushAnalyticsEvent('request_snapshot_cta_click', {
+      event_category: 'engagement',
+      event_label: 'request_snapshot_cta',
+      link_text: cleanText(link.textContent),
+      destination_path: destination
+    });
+  });
+
   if (navToggle && primaryNav) {
     navToggle.addEventListener('click', event => {
       event.stopPropagation();
@@ -324,6 +358,22 @@
       if (submitButton) submitButton.disabled = disabled;
     };
 
+    const trackFormSubmission = () => {
+      const eventPayload = {
+        event_category: 'lead',
+        event_label: 'request_snapshot',
+        method: 'hubspot_form',
+        currency: 'USD',
+        value: 2500
+      };
+
+      pushAnalyticsEvent('generate_lead', eventPayload);
+      pushAnalyticsEvent('request_snapshot_submitted', {
+        form_id: 'd07e922f-2b09-48ef-b8b0-ac9be2ee8551',
+        lead_value: 2500
+      });
+    };
+
     const setFieldState = (input, message = '') => {
       const field = input.closest('.field');
       const error = field && field.querySelector('.field-error');
@@ -426,6 +476,7 @@
         setControlsDisabled(true);
         if (submitButton) submitButton.textContent = 'Request received';
         fields.forEach(input => setFieldState(input, ''));
+        trackFormSubmission();
       } catch (error) {
         if (status) {
           status.textContent = error.message || 'The request did not send. Email partners@seykostudios.com and we will take it from there.';

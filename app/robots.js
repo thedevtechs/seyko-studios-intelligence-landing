@@ -1,4 +1,4 @@
-import { siteUrl } from '../lib/seo';
+import { siteUrl } from '../lib/seo.js';
 
 export default function robots() {
   return {
@@ -9,6 +9,10 @@ export default function robots() {
       },
       {
         userAgent: 'Googlebot',
+        allow: '/'
+      },
+      {
+        userAgent: 'Bingbot',
         allow: '/'
       },
       {
@@ -24,6 +28,7 @@ export default function robots() {
         allow: '/'
       }
     ],
+    host: siteUrl,
     sitemap: `${siteUrl}/sitemap.xml`
   };
 }
