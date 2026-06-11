@@ -9,7 +9,7 @@ Get the operator intelligence pages discovered, indexed, measured, and improved 
 ## Before Deployment
 
 - Set `NEXT_PUBLIC_SITE_URL=https://seykostudios.com` in production.
-- Set `NEXT_PUBLIC_GA_MEASUREMENT_ID=G-RPC43KH04G`.
+- Set `NEXT_PUBLIC_GA_MEASUREMENT_ID=G-T2RCPXHQRX`.
 - Set `NEXT_PUBLIC_HUBSPOT_PORTAL_ID=51463302`.
 - Add `NEXT_PUBLIC_GOOGLE_SITE_VERIFICATION` after Google Search Console provides the token.
 - Add `NEXT_PUBLIC_MICROSOFT_SITE_VERIFICATION` after Bing Webmaster Tools provides the token.

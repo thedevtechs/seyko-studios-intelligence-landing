@@ -39,6 +39,10 @@ const contentIndexRouteSource = readFileSync(new URL('../app/content-index.txt/r
 const launchChecklistSource = readFileSync(new URL('../docs/seo-launch-indexing-checklist.md', import.meta.url), 'utf8');
 const trackingPlaybookSource = readFileSync(new URL('../docs/seo-operator-intelligence-tracking-playbook.md', import.meta.url), 'utf8');
 const seoPriorityUrlsScript = readFileSync(new URL('../scripts/list-seo-priority-urls.mjs', import.meta.url), 'utf8');
+const faviconSource = readFileSync(new URL('../public/favicon.svg', import.meta.url), 'utf8');
+const faviconIcoBytes = readFileSync(new URL('../public/favicon.ico', import.meta.url));
+const faviconPngBytes = readFileSync(new URL('../public/favicon-32x32.png', import.meta.url));
+const appleTouchIconBytes = readFileSync(new URL('../public/apple-touch-icon.png', import.meta.url));
 const ogImageBytes = readFileSync(new URL(`../public${ogImage.path}`, import.meta.url));
 const atomFeed = renderAtomFeed();
 const contentIndex = renderContentIndex();
@@ -122,12 +126,24 @@ for (const route of routeList) {
 
   const canonical = absoluteUrl(route.path);
   const structured = flattenStructuredData(route.slug);
+  const pageHtml = htmlFor(route.slug);
   const webPage = structured.find(item => item['@type'] === 'WebPage' || item['@type'] === 'CollectionPage');
   const breadcrumbs = structured.find(item => item['@type'] === 'BreadcrumbList');
 
   if (!webPage) fail(`${route.path} is missing WebPage/CollectionPage schema.`);
   if (webPage && webPage.url !== canonical) fail(`${route.path} schema URL does not match canonical URL.`);
   if (!breadcrumbs) fail(`${route.path} is missing BreadcrumbList schema.`);
+  if (/free snapshot/i.test(pageHtml)) fail(`${route.path} should not frame the snapshot CTA as free.`);
+}
+
+const homeHtml = htmlFor('home');
+if (!homeHtml.includes('Find the buyers already looking') || !homeHtml.includes('Not more traffic')) {
+  fail('Home should keep the concise buyer-demand hero positioning.');
+}
+
+const pricingHtml = htmlFor('pricing');
+if (!pricingHtml.includes('The price is part of the door') || !pricingHtml.includes('Meaningful work starts at $2,500')) {
+  fail('/pricing should frame pricing as a selective qualification threshold.');
 }
 
 const insightHub = routeByPath.get('/insights');
@@ -145,7 +161,7 @@ if (insightHub) {
     fail('/insights ItemList count does not match operatorInsights.');
   }
   if (!hubHtml.includes('class="breadcrumbs"')) fail('/insights is missing visible breadcrumbs.');
-  if (!hubHtml.includes('Request Your Free Snapshot')) fail('/insights is missing the primary snapshot CTA.');
+  if (!hubHtml.includes('Request a demand snapshot')) fail('/insights is missing the primary snapshot CTA.');
   for (const insight of operatorInsights) {
     if (!hubHtml.includes(`href="${insight.path}"`)) fail(`/insights does not visibly link to ${insight.path}.`);
   }
@@ -727,6 +743,9 @@ if (!sharedScript.includes("pushAnalyticsEvent('generate_lead'")) {
 if (!sharedScript.includes("pushAnalyticsEvent('request_snapshot_submitted'")) {
   fail('assets/site.js is missing request_snapshot_submitted tracking.');
 }
+if (!sharedScript.includes('initGoogleAnalytics') || !sharedScript.includes('__seykoGaInitialized')) {
+  fail('assets/site.js is missing the defensive GA4 bootstrap.');
+}
 if (!sharedScript.includes('getCookie(\'hubspotutk\')') || !sharedScript.includes('payload.hutk')) {
   fail('assets/site.js is missing HubSpot cookie handoff for form attribution.');
 }
@@ -734,8 +753,31 @@ if (sharedScript !== publicSharedScript) {
   fail('public/assets/site.js is out of sync with assets/site.js.');
 }
 
-if (!layoutSource.includes('NEXT_PUBLIC_GA_MEASUREMENT_ID') || !layoutSource.includes('G-RPC43KH04G')) {
+if (!layoutSource.includes('NEXT_PUBLIC_GA_MEASUREMENT_ID') || !layoutSource.includes('G-T2RCPXHQRX')) {
   fail('app/layout.jsx is missing the GA4 measurement id configuration.');
+}
+if (!layoutSource.includes('data-ga-measurement-id')) {
+  fail('app/layout.jsx should expose the GA4 measurement id to the shared site script.');
+}
+if (!layoutSource.includes('<html lang="en" suppressHydrationWarning>') || !layoutSource.includes('suppressHydrationWarning>')) {
+  fail('app/layout.jsx should suppress hydration warnings on the root HTML/body shell for browser extension mutations.');
+}
+if (
+  !layoutSource.includes('/favicon.ico') ||
+  !layoutSource.includes('/favicon.svg') ||
+  !layoutSource.includes('/favicon-32x32.png') ||
+  !layoutSource.includes('/apple-touch-icon.png') ||
+  !layoutSource.includes('kai-20260608') ||
+  !faviconSource.includes('aria-label="Kai"') ||
+  !faviconSource.includes('>Kai</text>')
+) {
+  fail('The site should use the recreated Kai favicon with cache-busted ICO, SVG, PNG, and Apple touch fallbacks.');
+}
+if (faviconIcoBytes.length < 500 || faviconPngBytes.length < 500 || appleTouchIconBytes.length < 1000) {
+  fail('The recreated Kai favicon fallback files should be present and non-empty.');
+}
+if (faviconSource.includes('>S</text>')) {
+  fail('The old S favicon should not remain in public/favicon.svg.');
 }
 if (!layoutSource.includes('googletagmanager.com/gtag/js') || !layoutSource.includes('gtag(\'config\'')) {
   fail('app/layout.jsx is missing the Google tag loader/config.');
@@ -836,6 +878,12 @@ if (!layoutSource.includes('type="application/atom+xml"') || !layoutSource.inclu
 }
 if (!layoutSource.includes('type="text/plain"') || !layoutSource.includes('href="/content-index.txt"')) {
   fail('app/layout.jsx does not advertise the text content index.');
+}
+if (!layoutSource.includes('G-T2RCPXHQRX') || !envExampleSource.includes('NEXT_PUBLIC_GA_MEASUREMENT_ID=G-T2RCPXHQRX')) {
+  fail('GA4 should default to the G-T2RCPXHQRX measurement ID in app/layout.jsx and .env.example.');
+}
+if (layoutSource.includes('G-RPC43KH04G') || envExampleSource.includes('G-RPC43KH04G')) {
+  fail('Old GA4 measurement ID G-RPC43KH04G should not remain in layout or env example.');
 }
 if (!llmsSource.includes('https://seykostudios.com/feed.xml') || !llmsSource.includes('https://seykostudios.com/content-index.txt')) {
   fail('public/llms.txt does not include machine-readable discovery URLs.');

@@ -12,24 +12,24 @@ The site should attract owners and operators who are trying to answer a business
 
 | Page | Primary intent | Conversion path |
 | --- | --- | --- |
-| `/operator-intelligence` | "I need an operator intelligence brief that turns business data and market insight into a decision" | Request Free Snapshot |
-| `/market-intelligence-agency` | "I need a market intelligence agency / service for growth decisions" | Request Free Snapshot |
-| `/business-data-intelligence` | "I need business data intelligence services for better growth decisions" | Request Free Snapshot |
-| `/industry-intelligence` | "I need industry intelligence / market insight for my business" | Request Free Snapshot |
-| `/methodology` | "How do you build market intelligence / can I trust the method?" | Request Free Snapshot |
-| `/sample-market-intelligence-report` | "Show me a sample market intelligence report / report example" | Request Free Snapshot |
-| `/competitive-intelligence-services` | "I need competitive intelligence services / competitor analysis for my market" | Request Free Snapshot |
-| `/insights/business-data-market-intelligence` | "How do I use business data for market intelligence?" | Request Free Snapshot |
-| `/insights/business-data-checklist-growth-decisions` | "What business data should I track before spending more on growth?" | Request Free Snapshot |
-| `/insights/industry-intelligence-service-businesses` | "What is industry intelligence for a service business?" | Request Free Snapshot |
-| `/insights/market-intelligence-report-service-businesses` | "What should a market intelligence report include for a service business?" | Request Free Snapshot |
-| `/insights/competitive-intelligence-local-markets` | "How do I understand competitors in my local market?" | Request Free Snapshot |
-| `/insights/market-intelligence-vs-business-intelligence` | "What is the difference between market intelligence and business intelligence?" | Request Free Snapshot |
-| `/insights/business-intelligence-service-businesses` | "How should a service business use business intelligence?" | Request Free Snapshot |
-| `/insights/demand-intelligence-vs-lead-generation` | "Is demand intelligence different from lead generation?" | Request Free Snapshot |
-| `/insights/choose-market-before-increasing-ad-spend` | "How should I choose a market before increasing ad spend?" | Request Free Snapshot |
-| `/insights/before-hiring-marketing-agency` | "What should I inspect before hiring a marketing agency?" | Request Free Snapshot |
-| `/pricing` | "What does this caliber of work cost?" | Request Free Snapshot |
+| `/operator-intelligence` | "I need an operator intelligence brief that turns business data and market insight into a decision" | Request Demand Snapshot |
+| `/market-intelligence-agency` | "I need a market intelligence agency / service for growth decisions" | Request Demand Snapshot |
+| `/business-data-intelligence` | "I need business data intelligence services for better growth decisions" | Request Demand Snapshot |
+| `/industry-intelligence` | "I need industry intelligence / market insight for my business" | Request Demand Snapshot |
+| `/methodology` | "How do you build market intelligence / can I trust the method?" | Request Demand Snapshot |
+| `/sample-market-intelligence-report` | "Show me a sample market intelligence report / report example" | Request Demand Snapshot |
+| `/competitive-intelligence-services` | "I need competitive intelligence services / competitor analysis for my market" | Request Demand Snapshot |
+| `/insights/business-data-market-intelligence` | "How do I use business data for market intelligence?" | Request Demand Snapshot |
+| `/insights/business-data-checklist-growth-decisions` | "What business data should I track before spending more on growth?" | Request Demand Snapshot |
+| `/insights/industry-intelligence-service-businesses` | "What is industry intelligence for a service business?" | Request Demand Snapshot |
+| `/insights/market-intelligence-report-service-businesses` | "What should a market intelligence report include for a service business?" | Request Demand Snapshot |
+| `/insights/competitive-intelligence-local-markets` | "How do I understand competitors in my local market?" | Request Demand Snapshot |
+| `/insights/market-intelligence-vs-business-intelligence` | "What is the difference between market intelligence and business intelligence?" | Request Demand Snapshot |
+| `/insights/business-intelligence-service-businesses` | "How should a service business use business intelligence?" | Request Demand Snapshot |
+| `/insights/demand-intelligence-vs-lead-generation` | "Is demand intelligence different from lead generation?" | Request Demand Snapshot |
+| `/insights/choose-market-before-increasing-ad-spend` | "How should I choose a market before increasing ad spend?" | Request Demand Snapshot |
+| `/insights/before-hiring-marketing-agency` | "What should I inspect before hiring a marketing agency?" | Request Demand Snapshot |
+| `/pricing` | "What does this caliber of work cost?" | Request Demand Snapshot |
 
 ## Query Clusters To Track
 

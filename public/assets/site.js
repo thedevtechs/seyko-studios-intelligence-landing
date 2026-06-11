@@ -11,6 +11,30 @@
   const primaryNav = document.getElementById('primary-nav');
   const navMenus = Array.from(document.querySelectorAll('[data-nav-menu]'));
   const navOffset = () => (nav ? nav.offsetHeight : 0) + 18;
+  const gaMeasurementId = document.body?.dataset.gaMeasurementId || '';
+
+  const initGoogleAnalytics = () => {
+    if (!gaMeasurementId || window.__seykoGaInitialized) return;
+    window.__seykoGaInitialized = true;
+    window.dataLayer = window.dataLayer || [];
+
+    if (typeof window.gtag !== 'function') {
+      window.gtag = function gtag() {
+        window.dataLayer.push(arguments);
+      };
+      window.gtag('js', new Date());
+      window.gtag('config', gaMeasurementId);
+    }
+
+    const loaderSrc = `https://www.googletagmanager.com/gtag/js?id=${encodeURIComponent(gaMeasurementId)}`;
+    const hasLoader = Array.from(document.scripts).some(script => script.src === loaderSrc);
+    if (!hasLoader) {
+      const loader = document.createElement('script');
+      loader.async = true;
+      loader.src = loaderSrc;
+      document.head.appendChild(loader);
+    }
+  };
 
   const normalizedPath = path => {
     if (!path) return '/';
@@ -66,6 +90,8 @@
       ...eventPayload
     });
   };
+
+  initGoogleAnalytics();
 
   document.addEventListener('click', event => {
     const link = event.target.closest('a[href]');

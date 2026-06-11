@@ -3,10 +3,11 @@ import { ogImage, seoDescription, seoKeywords, seoTitle, siteUrl, structuredData
 import Script from 'next/script';
 import '../assets/styles.css';
 
-const googleAnalyticsId = process.env.NEXT_PUBLIC_GA_MEASUREMENT_ID || 'G-RPC43KH04G';
+const googleAnalyticsId = process.env.NEXT_PUBLIC_GA_MEASUREMENT_ID || 'G-T2RCPXHQRX';
 const hubspotPortalId = process.env.NEXT_PUBLIC_HUBSPOT_PORTAL_ID || process.env.HUBSPOT_PORTAL_ID || '51463302';
 const googleSiteVerification = process.env.NEXT_PUBLIC_GOOGLE_SITE_VERIFICATION || process.env.GOOGLE_SITE_VERIFICATION || '';
 const microsoftSiteVerification = process.env.NEXT_PUBLIC_MICROSOFT_SITE_VERIFICATION || process.env.MICROSOFT_SITE_VERIFICATION || '';
+const faviconVersion = 'kai-20260608';
 
 export const metadata = {
   metadataBase: new URL(siteUrl),
@@ -23,12 +24,27 @@ export const metadata = {
   icons: {
     icon: [
       {
-        url: '/favicon.svg',
+        url: `/favicon.ico?v=${faviconVersion}`,
+        sizes: 'any'
+      },
+      {
+        url: `/favicon.svg?v=${faviconVersion}`,
         type: 'image/svg+xml'
+      },
+      {
+        url: `/favicon-32x32.png?v=${faviconVersion}`,
+        type: 'image/png',
+        sizes: '32x32'
       }
     ],
-    shortcut: '/favicon.svg',
-    apple: '/favicon.svg'
+    shortcut: `/favicon.ico?v=${faviconVersion}`,
+    apple: [
+      {
+        url: `/apple-touch-icon.png?v=${faviconVersion}`,
+        sizes: '180x180',
+        type: 'image/png'
+      }
+    ]
   },
   openGraph: {
     title: seoTitle,
@@ -69,7 +85,7 @@ export const metadata = {
 
 export default function RootLayout({ children }) {
   return (
-    <html lang="en">
+    <html lang="en" suppressHydrationWarning>
       <head>
         <style dangerouslySetInnerHTML={{ __html: getInlineStyle() }} />
         <script
@@ -81,11 +97,12 @@ export default function RootLayout({ children }) {
         <link rel="alternate" type="application/atom+xml" title="Seyko Studios Operator Insights" href="/feed.xml" />
         <link rel="alternate" type="text/plain" title="Seyko Studios Content Index" href="/content-index.txt" />
       </head>
-      <body data-screen-label={getScreenLabel()} suppressHydrationWarning>
+      <body data-screen-label={getScreenLabel()} data-ga-measurement-id={googleAnalyticsId || undefined} suppressHydrationWarning>
         {children}
         {googleAnalyticsId ? (
           <>
             <Script
+              id="google-tag-loader"
               src={`https://www.googletagmanager.com/gtag/js?id=${encodeURIComponent(googleAnalyticsId)}`}
               strategy="afterInteractive"
             />
