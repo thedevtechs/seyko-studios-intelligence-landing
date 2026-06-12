@@ -7,7 +7,7 @@ const googleAnalyticsId = process.env.NEXT_PUBLIC_GA_MEASUREMENT_ID || 'G-T2RCPX
 const hubspotPortalId = process.env.NEXT_PUBLIC_HUBSPOT_PORTAL_ID || process.env.HUBSPOT_PORTAL_ID || '51463302';
 const googleSiteVerification = process.env.NEXT_PUBLIC_GOOGLE_SITE_VERIFICATION || process.env.GOOGLE_SITE_VERIFICATION || '';
 const microsoftSiteVerification = process.env.NEXT_PUBLIC_MICROSOFT_SITE_VERIFICATION || process.env.MICROSOFT_SITE_VERIFICATION || '';
-const faviconVersion = 'kai-20260608';
+const faviconVersion = 'nav-s-centered-20260612';
 
 export const metadata = {
   metadataBase: new URL(siteUrl),

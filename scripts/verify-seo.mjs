@@ -767,17 +767,14 @@ if (
   !layoutSource.includes('/favicon.svg') ||
   !layoutSource.includes('/favicon-32x32.png') ||
   !layoutSource.includes('/apple-touch-icon.png') ||
-  !layoutSource.includes('kai-20260608') ||
-  !faviconSource.includes('aria-label="Kai"') ||
-  !faviconSource.includes('>Kai</text>')
+  !layoutSource.includes('nav-s-centered-20260612') ||
+  !faviconSource.includes('aria-label="Seyko Studios"') ||
+  !faviconSource.includes('>S</text>')
 ) {
-  fail('The site should use the recreated Kai favicon with cache-busted ICO, SVG, PNG, and Apple touch fallbacks.');
+  fail('The site should use the nav-logo S favicon with cache-busted ICO, SVG, PNG, and Apple touch fallbacks.');
 }
 if (faviconIcoBytes.length < 500 || faviconPngBytes.length < 500 || appleTouchIconBytes.length < 1000) {
-  fail('The recreated Kai favicon fallback files should be present and non-empty.');
-}
-if (faviconSource.includes('>S</text>')) {
-  fail('The old S favicon should not remain in public/favicon.svg.');
+  fail('The nav-logo S favicon fallback files should be present and non-empty.');
 }
 if (!layoutSource.includes('googletagmanager.com/gtag/js') || !layoutSource.includes('gtag(\'config\'')) {
   fail('app/layout.jsx is missing the Google tag loader/config.');
