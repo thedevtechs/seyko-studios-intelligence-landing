@@ -14,6 +14,7 @@ import {
   sampleMarketReportFaq,
   renderPage,
   routeList,
+  services,
   siteUpdatedIso
 } from '../lib/site-pages.js';
 import sitemap, { monthlyRoutes, routePriority } from '../app/sitemap.js';
@@ -137,12 +138,12 @@ for (const route of routeList) {
 }
 
 const homeHtml = htmlFor('home');
-if (!homeHtml.includes('Find the buyers already looking') || !homeHtml.includes('Not more traffic')) {
-  fail('Home should keep the concise buyer-demand hero positioning.');
+if (!homeHtml.includes('Intelligence-led digital agency') || !homeHtml.includes('Bespoke digital work for operators')) {
+  fail('Home should lead with the intelligence-led agency positioning.');
 }
 
 const pricingHtml = htmlFor('pricing');
-if (!pricingHtml.includes('The price is part of the door') || !pricingHtml.includes('Meaningful work starts at $2,500')) {
+if (!pricingHtml.includes('The price is part of the door') || !pricingHtml.includes('Meaningful work starts at $3,500')) {
   fail('/pricing should frame pricing as a selective qualification threshold.');
 }
 
@@ -161,7 +162,7 @@ if (insightHub) {
     fail('/insights ItemList count does not match operatorInsights.');
   }
   if (!hubHtml.includes('class="breadcrumbs"')) fail('/insights is missing visible breadcrumbs.');
-  if (!hubHtml.includes('Request a demand snapshot')) fail('/insights is missing the primary snapshot CTA.');
+  if (!hubHtml.includes('Request a strategy call')) fail('/insights is missing the primary strategy call CTA.');
   for (const insight of operatorInsights) {
     if (!hubHtml.includes(`href="${insight.path}"`)) fail(`/insights does not visibly link to ${insight.path}.`);
   }
@@ -175,6 +176,8 @@ if (siteMapRoute) {
   const siteMapStructured = flattenStructuredData(siteMapRoute.slug);
   const siteMapPage = siteMapStructured.find(item => item['@id'] === `${siteUrl}/site-map#webpage`);
   const expectedSiteMapLinks = [
+    '/services',
+    ...services.map(service => service.path),
     '/market-intelligence-agency',
     '/operator-intelligence',
     '/business-data-intelligence',
@@ -197,7 +200,7 @@ if (siteMapRoute) {
 
   if (!siteMapHtml.includes('class="breadcrumbs"')) fail('/site-map is missing visible breadcrumbs.');
   if (!siteMapHtml.includes('href="/content-index.txt"')) fail('/site-map should link to the text content index.');
-  if (!siteMapHtml.includes('href="/request-snapshot"')) fail('/site-map should link to the request snapshot conversion path.');
+  if (!siteMapHtml.includes('href="/request-snapshot"')) fail('/site-map should link to the strategy call conversion path.');
   if (!siteMapPage) fail('/site-map is missing WebPage schema.');
   for (const path of expectedSiteMapLinks) {
     if (!siteMapHtml.includes(`href="${path}"`)) fail(`/site-map does not visibly link to ${path}.`);
@@ -231,6 +234,12 @@ if (homeRoute) {
   }
   if (!homeHtml.includes('href="/competitive-intelligence-services"')) {
     fail('/ homepage should visibly link to the competitive intelligence services page.');
+  }
+  if (!homeHtml.includes('href="/services"')) {
+    fail('/ homepage should visibly link to the services hub.');
+  }
+  for (const service of services) {
+    if (!homeHtml.includes(`href="${service.path}"`)) fail(`/ homepage does not visibly link to ${service.path}.`);
   }
   if (!homeHtml.includes('class="operator-visual operator-board-visual"')) {
     fail('/ homepage is missing the visual operator intelligence board.');
@@ -734,14 +743,20 @@ for (const insight of operatorInsights) {
   if (entry && entry.priority < 0.76) fail(`${insight.path} sitemap priority should be at least 0.76.`);
 }
 
-if (!sharedScript.includes("pushAnalyticsEvent('request_snapshot_cta_click'")) {
-  fail('assets/site.js is missing request_snapshot_cta_click tracking.');
+for (const service of services) {
+  const entry = sitemapByUrl.get(absoluteUrl(service.path));
+  if (!entry) fail(`${service.path} is missing from sitemap output.`);
+  if (entry && entry.priority < 0.76) fail(`${service.path} sitemap priority should be at least 0.76.`);
+}
+
+if (!sharedScript.includes("pushAnalyticsEvent('strategy_call_cta_click'")) {
+  fail('assets/site.js is missing strategy_call_cta_click tracking.');
 }
 if (!sharedScript.includes("pushAnalyticsEvent('generate_lead'")) {
   fail('assets/site.js is missing generate_lead tracking.');
 }
-if (!sharedScript.includes("pushAnalyticsEvent('request_snapshot_submitted'")) {
-  fail('assets/site.js is missing request_snapshot_submitted tracking.');
+if (!sharedScript.includes("pushAnalyticsEvent('strategy_call_submitted'")) {
+  fail('assets/site.js is missing strategy_call_submitted tracking.');
 }
 if (!sharedScript.includes('initGoogleAnalytics') || !sharedScript.includes('__seykoGaInitialized')) {
   fail('assets/site.js is missing the defensive GA4 bootstrap.');

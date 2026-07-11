@@ -100,9 +100,9 @@
     const destination = pathForLink(link);
     if (destination !== '/request-snapshot') return;
 
-    pushAnalyticsEvent('request_snapshot_cta_click', {
+    pushAnalyticsEvent('strategy_call_cta_click', {
       event_category: 'engagement',
-      event_label: 'request_snapshot_cta',
+      event_label: 'strategy_call_cta',
       link_text: cleanText(link.textContent),
       destination_path: destination
     });
@@ -250,13 +250,23 @@
     '.upsell-card',
     '.work-card',
     '.system',
-    '.faq-item'
+    '.faq-item',
+    '.stat',
+    '.industry-card',
+    '.step-card',
+    '.detail-card',
+    '.flavor-card',
+    '.founder-card',
+    '.fit-card',
+    '.insight-card',
+    '.operator-intent-card',
+    '.authority-card'
   ].join(',');
 
   const revealEls = Array.from(document.querySelectorAll(revealTargets));
   revealEls.forEach((el, index) => {
     el.classList.add('motion-reveal');
-    el.style.setProperty('--reveal-delay', `${Math.min((index % 6) * 45, 225)}ms`);
+    el.style.setProperty('--reveal-delay', `${Math.min((index % 8) * 40, 280)}ms`);
     if (el.getBoundingClientRect().top < window.innerHeight * 0.92) el.classList.add('in');
   });
 
@@ -270,7 +280,7 @@
           io.unobserve(e.target);
         }
       });
-    }, { threshold: 0.12, rootMargin: '0px 0px -8% 0px' });
+    }, { threshold: 0.10, rootMargin: '0px 0px -6% 0px' });
 
     document.querySelectorAll('.reveal, .motion-reveal').forEach(el => io.observe(el));
   } else {
@@ -305,14 +315,25 @@
     });
   });
 
-  // Subtle pointer light for premium product surfaces.
+  // Subtle pointer light for premium product surfaces (spotlight + card glow)
   if (!reducedMotion) {
     document.addEventListener('pointermove', event => {
-      const el = event.target.closest('[data-spotlight]');
-      if (!el) return;
-      const rect = el.getBoundingClientRect();
-      el.style.setProperty('--mx', `${event.clientX - rect.left}px`);
-      el.style.setProperty('--my', `${event.clientY - rect.top}px`);
+      // Spotlight for data-spotlight elements
+      const spotEl = event.target.closest('[data-spotlight]');
+      if (spotEl) {
+        const rect = spotEl.getBoundingClientRect();
+        spotEl.style.setProperty('--mx', `${event.clientX - rect.left}px`);
+        spotEl.style.setProperty('--my', `${event.clientY - rect.top}px`);
+      }
+      // Soft card glow tracking
+      const cardEl = event.target.closest('.soft-card, .price-card');
+      if (cardEl) {
+        const rect = cardEl.getBoundingClientRect();
+        const x = ((event.clientX - rect.left) / rect.width) * 100;
+        const y = ((event.clientY - rect.top) / rect.height) * 100;
+        cardEl.style.setProperty('--mx', `${x}%`);
+        cardEl.style.setProperty('--my', `${y}%`);
+      }
     });
   }
 
@@ -323,7 +344,7 @@
     const suffix = el.dataset.suffix || '';
     const prefix = el.dataset.prefix || '';
     let start = null;
-    const dur = 1400;
+    const dur = reducedMotion ? 1 : 1400;
     const step = (ts) => {
       if (!start) start = ts;
       const p = Math.min(1, (ts - start) / dur);
@@ -337,6 +358,30 @@
     });
     ob.observe(el);
   });
+
+  // Animate progress bars (radar-bar, visual-track, signal-bar-track, leak-meter)
+  // Each bar has a width already set inline — we capture it, set to 0, then animate to target
+  if (!reducedMotion && 'IntersectionObserver' in window) {
+    const barSelectors = '.radar-bar span, .visual-track span, .signal-bar-track span, .leak-meter i';
+    document.querySelectorAll(barSelectors).forEach(bar => {
+      const naturalWidth = bar.style.width || getComputedStyle(bar).width;
+      bar.dataset.targetWidth = naturalWidth;
+      bar.style.width = '0';
+      bar.style.transition = 'width 1.1s cubic-bezier(0.16, 1, 0.3, 1)';
+      const observer = new IntersectionObserver(entries => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            // Delay slightly per sibling index for stagger
+            const siblings = Array.from(bar.closest('.radar-bar, .visual-track, .signal-bar-track, .leak-meter')?.parentElement?.querySelectorAll(barSelectors) || []);
+            const idx = siblings.indexOf(bar);
+            setTimeout(() => { bar.style.width = bar.dataset.targetWidth; }, idx * 80);
+            observer.unobserve(bar);
+          }
+        });
+      }, { threshold: 0.3 });
+      observer.observe(bar);
+    });
+  }
 
   // Request form validation and HubSpot submission.
   const requestForm = document.querySelector('[data-request-form]');
@@ -354,8 +399,9 @@
       email: 'Add a valid email.',
       website: 'Add the company website.',
       industry: 'Choose an industry.',
+      service_interest: 'Choose the service interest.',
       city: 'Add the city or market.',
-      service_procedure_project: 'Add the service, procedure, project, or buyer segment to inspect.'
+      service_procedure_project: 'Add the service line, project, or workstream to inspect.'
     };
 
     const getCookie = name => {
@@ -387,16 +433,16 @@
     const trackFormSubmission = () => {
       const eventPayload = {
         event_category: 'lead',
-        event_label: 'request_snapshot',
+        event_label: 'strategy_call',
         method: 'hubspot_form',
         currency: 'USD',
-        value: 2500
+        value: 3500
       };
 
       pushAnalyticsEvent('generate_lead', eventPayload);
-      pushAnalyticsEvent('request_snapshot_submitted', {
+      pushAnalyticsEvent('strategy_call_submitted', {
         form_id: 'd07e922f-2b09-48ef-b8b0-ac9be2ee8551',
-        lead_value: 2500
+        lead_value: 3500
       });
     };
 
@@ -489,7 +535,7 @@
         }
 
         if (status) {
-          status.textContent = 'Snapshot request sent.';
+          status.textContent = 'Strategy call request sent.';
           status.classList.add('success');
           status.classList.remove('error');
         }

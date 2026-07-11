@@ -12,6 +12,7 @@ const requiredFields = [
   'email',
   'website',
   'industry',
+  'service_interest',
   'city',
   'service_procedure_project'
 ];
@@ -22,8 +23,9 @@ const fieldLabels = {
   email: 'Email',
   website: 'Website',
   industry: 'Industry',
+  service_interest: 'Service interest',
   city: 'City',
-  service_procedure_project: 'Service, procedure, or project'
+  service_procedure_project: 'Service line, project, and what needs to change'
 };
 
 function clean(value) {
@@ -130,7 +132,7 @@ export async function POST(request) {
   }));
 
   const context = {
-    pageName: 'Request a Demand Snapshot',
+    pageName: 'Request a Strategy Call',
     pageUri: clean(payload.pageUri) || 'https://seykostudios.com/request-snapshot'
   };
 

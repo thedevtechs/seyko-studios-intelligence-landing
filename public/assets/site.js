@@ -100,9 +100,9 @@
     const destination = pathForLink(link);
     if (destination !== '/request-snapshot') return;
 
-    pushAnalyticsEvent('request_snapshot_cta_click', {
+    pushAnalyticsEvent('strategy_call_cta_click', {
       event_category: 'engagement',
-      event_label: 'request_snapshot_cta',
+      event_label: 'strategy_call_cta',
       link_text: cleanText(link.textContent),
       destination_path: destination
     });
@@ -354,8 +354,9 @@
       email: 'Add a valid email.',
       website: 'Add the company website.',
       industry: 'Choose an industry.',
+      service_interest: 'Choose the service interest.',
       city: 'Add the city or market.',
-      service_procedure_project: 'Add the service, procedure, project, or buyer segment to inspect.'
+      service_procedure_project: 'Add the service line, project, or workstream to inspect.'
     };
 
     const getCookie = name => {
@@ -387,16 +388,16 @@
     const trackFormSubmission = () => {
       const eventPayload = {
         event_category: 'lead',
-        event_label: 'request_snapshot',
+        event_label: 'strategy_call',
         method: 'hubspot_form',
         currency: 'USD',
-        value: 2500
+        value: 3500
       };
 
       pushAnalyticsEvent('generate_lead', eventPayload);
-      pushAnalyticsEvent('request_snapshot_submitted', {
+      pushAnalyticsEvent('strategy_call_submitted', {
         form_id: 'd07e922f-2b09-48ef-b8b0-ac9be2ee8551',
-        lead_value: 2500
+        lead_value: 3500
       });
     };
 
@@ -489,7 +490,7 @@
         }
 
         if (status) {
-          status.textContent = 'Snapshot request sent.';
+          status.textContent = 'Strategy call request sent.';
           status.classList.add('success');
           status.classList.remove('error');
         }

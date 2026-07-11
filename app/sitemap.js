@@ -3,6 +3,12 @@ import { routeList, siteUpdatedIso } from '../lib/site-pages.js';
 
 export const monthlyRoutes = new Set([
   '/',
+  '/services',
+  '/branding',
+  '/web-development',
+  '/seo',
+  '/data-intelligence',
+  '/marketing',
   '/operator-intelligence',
   '/market-intelligence-agency',
   '/business-data-intelligence',
@@ -18,6 +24,12 @@ export const monthlyRoutes = new Set([
 export const routePriority = {
   '/': 1,
   '/request-snapshot': 0.9,
+  '/services': 0.9,
+  '/branding': 0.84,
+  '/web-development': 0.84,
+  '/seo': 0.84,
+  '/data-intelligence': 0.84,
+  '/marketing': 0.84,
   '/operator-intelligence': 0.89,
   '/market-intelligence-agency': 0.88,
   '/business-data-intelligence': 0.86,
